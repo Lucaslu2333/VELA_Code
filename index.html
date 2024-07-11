@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)file:///Users/lucas/Downloads/%E5%9C%A8%E7%BA%BF%E5%BA%8F%E5%88%97%E5%8F%B7%E7%94%9F%E6%88%90%E5%99%A81.htm -->
+<html style="height: 100%"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>VELA溯源码生成器</title>
+    
+    <link rel="stylesheet" href="./在线序列号生成器_files/layui.css" media="all">
+    <link rel="stylesheet" href="./在线序列号生成器_files/main.css" type="text/css">
+
+    <link rel="icon" href="file:///Users/lucas/Downloads/%E5%9C%A8%E7%BA%BF%E5%BA%8F%E5%88%97%E5%8F%B7%E7%94%9F%E6%88%90%E5%99%A8_files/icon.png">
+    
+    <script src="./在线序列号生成器_files/hm.js"></script><script src="./在线序列号生成器_files/hm(1).js"></script><script src="./在线序列号生成器_files/hm(2).js"></script><script type="text/javascript" src="./在线序列号生成器_files/common_util-739f9abb71fa43bbe3660f1d274c6c81.js" charset="UTF-8"></script>
+
+    <style type="text/css">
+        #transformResult {
+            white-space: pre-wrap;
+            word-break: break-all;
+            word-wrap: break-word;
+            max-height: 1000px;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+
+        .adjust_width {
+            width: 150px !important;
+        }
+
+        @media screen and (max-width: 450px) {
+            .adjust_margin {
+                margin-left: 152px !important;
+            }
+        }
+
+        .layui-table td {
+            word-break: break-all;
+            min-width: 100px;
+        }
+
+        .layui-table th {
+            min-width: 100px;
+        }
+
+    </style>
+<link id="layuicss-laydate" rel="stylesheet" href="./在线序列号生成器_files/laydate.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="./在线序列号生成器_files/layer.css" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="./在线序列号生成器_files/code.css" media="all"></head>
+
+<body class="layui-layout-body" style="height:100%; overflow: auto;">
+<div class="layui-layout layui-layout-admin" style="height:100%">
+
+    <div>
+    <style type="text/css">
+        #selectLangAnchor > span {
+            display: none;
+        }
+
+        #mobile_menu_anchor > span {
+            display: none;
+        }
+
+        #userCenterAnchor > span {
+            display: none;
+        }
+
+        .normal_site_title_menu_zh {
+            display: none;
+        }
+
+        .normal_site_title_menu_en {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .normal_site_title_menu_zh {
+                display: unset;
+                position: absolute;
+                top: 16px;
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 20px;
+                left: calc(50vw - 75px);
+                cursor: pointer;
+            }
+
+            .normal_site_title_menu_en {
+                display: unset;
+                position: absolute;
+                top: 18px;
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 20px;
+                left: calc(50vw - 70px);
+                cursor: pointer;
+            }
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function eraseCookie(sKey, sPath, sDomain) {
+            document.cookie = encodeURIComponent(sKey) +
+                "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" +
+                (sDomain ? "; domain=" + sDomain : "") +
+                (sPath ? "; path=" + sPath : "");
+        }
+
+        function logoutHandler() {
+            eraseCookie('access_token', '/', 'lddgo.net');
+            window.location.href = handleWebUrl("/index");
+        }
+
+        function gotoIndex() {
+            window.location.href = handleWebUrl("/index");
+        }
+
+        function gotoCenter() {
+            window.location.href = handleWebUrl("/web/user/center/index");
+        }
+    </script>
+
+    <input type="hidden" value="false" id="commonLogin">
+
+    
+
+</div>
+
+    <div class="main_content" style="min-height: calc(100% - 130px)">
+
+
+        <div>
+
+            <div>
+    <link rel="stylesheet" href="./在线序列号生成器_files/share.min-96b5f943f1d0b7d1c54e204a67a8e7e6.css" type="text/css">
+    <style type="text/css">
+
+        .tag_container {
+            line-height: 24px;
+        }
+
+        .tag_anchor {
+            color: #01AAED;
+            margin-right: 15px;
+        }
+
+        .tag_container a:nth-child(2) {
+            margin-left: 15px;
+        }
+    </style>
+    <script type="text/javascript" src="./在线序列号生成器_files/social-share.min-82bca2f753e7a9c995697c7758b34219.js"></script>
+    <script type="text/javascript">
+        function closeShare() {
+            // const layer = layui.layer;
+            // layer.closeAll('tips');
+        }
+
+        function hasFavorite() {
+            let $ = layui.$;
+            let toolFavoriteStr = $("#toolFavorite").val();
+            let userFavorite = (!isNullOrEmpty(toolFavoriteStr)) && toolFavoriteStr === "true";
+            return userFavorite;
+        }
+
+        function getShareWidthHeight() {
+            let $ = layui.$;
+            let windowWidth = $(window).width();
+            let width = Math.min(windowWidth - 10, 500);
+            return [width.toString() + "px", "340px"];
+        }
+
+        function updateFavoriteStatus(favoriteTool) {
+            let $ = layui.$;
+            let favoriteClass = favoriteTool ? "layui-icon layui-icon-star-fill ld_favorite_icon" : "layui-icon layui-icon-star";
+            $("#favoriteIcon").attr("class", favoriteClass);
+            $("#favoriteDynamicIcon").attr("class", favoriteClass);
+        }
+
+        const copyLinkMsg = formatLang('Copy Link', '复制链接');
+        const favoriteMsg = formatLang('Favorite', '收藏');
+
+        const wechatHelper = formatLang('Click "discovery" in wechat and scan it', '微信里点“发现”，扫一下');
+        const wechatTitle = formatLang('Wechat scanning: share', '微信扫一扫：分享');
+        const shareConfig = {
+            sites: ['qq', 'qzone', 'wechat', 'weibo', 'facebook', 'twitter'],
+            wechatQrcodeTitle: wechatTitle,
+            wechatQrcodeHelper: `<p>${wechatHelper}</p>`,
+        };
+
+        function showShare(justShare) {
+            const layer = layui.layer;
+            let favorite = hasFavorite();
+            let favoriteClass = favorite ? "layui-icon layui-icon-star-fill ld_favorite_icon" : "layui-icon layui-icon-star";
+            let title = formatLang("Operation", "操作");
+            let pageTitle = document.title;
+            let pageUrl = window.location.href;
+            let toolInfo = `${pageTitle}\n\n${pageUrl}`;
+
+            const content = `
+        <div style="padding-left: 20px;padding-right: 20px;">
+            <div style="margin-top: 20px;">
+                <textarea rows="4" style="width: 100%;min-height: 100px;border: 1px solid #999;padding: 10px;box-sizing: border-box;">${toolInfo}</textarea>
+            </div>
+        <div style="margin:20px 0 20px 5px;cursor: pointer;" id="copyToolLinkDynamic"><i class="layui-icon layui-icon-unlink"></i> <span style="margin-left:5px;font-size: 14px;">  ${copyLinkMsg}</span></div>
+        <div style="margin:20px 0 20px 5px;cursor: pointer;" onclick="favoriteHandle()"><i id="favoriteDynamicIcon" class="${favoriteClass}"></i> <span style="margin-left:5px;font-size: 14px;">  ${favoriteMsg}</span></div>
+        <div class="social-share"></div>
+</div>
+        `;
+
+
+            layer.open({
+                type: 1,
+                content: content,
+                title: title,
+                area: getShareWidthHeight(),
+            });
+            socialShare('.social-share', shareConfig);
+
+            const clipboard = new ClipboardJS(document.getElementById("copyToolLinkDynamic"), {
+                text: function (trigger) {
+                    return window.location.href;
+                },
+            });
+            clipboard.on('success', function (e) {
+                layer.msg(getLangMsg("user.operator.copySuccess"));
+                closeShare();
+            });
+        }
+
+        function handleFavorite(toolID, favorite, $) {
+            let apiName = favorite ? handleApi("/api/FavoriteTool") : handleApi("/api/DeFavoriteTool");
+            let pa = {toolID};
+            let layer = layui.layer;
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify(pa),
+                url: apiName,
+                beforeSend: function (request) {
+                    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                },
+                success: function (resultWrapper) {
+                    if (resultWrapper.code !== 0) {
+                        layer.msg(getLangMsg("network.accessError") + resultWrapper.msg);
+                    } else {
+                        let successMsg = null;
+                        if (favorite) {
+                            successMsg = formatLang("Favorite success", "收藏成功");
+                        } else {
+                            successMsg = formatLang("Cancel favorite", "取消收藏");
+                        }
+                        $("#toolFavorite").val(favorite);
+                        updateFavoriteStatus(favorite);
+                        layer.msg(successMsg);
+                    }
+                },
+                error: function (xhr, msg, ex) {
+                    layer.msg(getLangMsg("network.serviceError"));
+                },
+            });
+        }
+
+        function favoriteHandle() {
+            let $ = layui.$;
+            const layer = layui.layer;
+            const unLoginMsg = formatLang("User not logged in", "用户未登录");
+            let commonLogin = $("#commonLogin").val();
+            if (isNullOrEmpty(commonLogin) || (commonLogin !== "true")) {
+                layer.msg(unLoginMsg);
+            } else {
+                let userFavorite = hasFavorite();
+                let toolID = $("#toolID").val();
+                if (!isNullOrEmpty(toolID)) {
+                    handleFavorite(toolID, !userFavorite, $);
+                }
+            }
+            closeShare()
+        }
+    </script>
+
+    
+
+    <div>
+        <h1 class="main_title">VELA溯源序列号生成 Tạo số sê-ri truy xuất nguồn gốc VELA</h1>
+    </div>
+
+    
+
+    <div style="margin-top: 16px;margin-bottom: 20px;">
+        <hr>
+    </div>
+    
+
+</div>
+
+            <div class="layui-form layui-form-pane" lay-filter="seqNoForm">
+
+                <div>
+                    <div class="layui-tab layui-tab-card" lay-filter="seqTab">
+                        <ul class="layui-tab-title">
+                            <li lay-id="0" class="layui-this">基于数字</li>
+                            <li lay-id="1" class="">基于表达式</li>
+                        </ul>
+                        <div class="layui-tab-content" style="padding-top: 30px;">
+                            <div class="layui-tab-item layui-show">
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label adjust_width" style="
+    padding-right: 0px;
+    padding-left: 0px;
+">起始数字Mã bắt đầu</label>
+                                    <div class="layui-input-inline adjust_margin">
+                                        <input type="text" value="0" name="startNumber" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">从此序号开始，任意大小整数Bắt đầu từ số thứ tự này, bất kỳ số nguyên kích thước nào</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label adjust_width" style="
+    padding-right: 0px;
+    padding-left: 0px;
+">结束数字Số cuối cùng</label>
+                                    <div class="layui-input-inline adjust_margin">
+                                        <input type="text" value="1" name="endNumber" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">最后一个为此序号，任意大小整数Số cuối cùng là số này, số nguyên có kích thước bất kỳ</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label adjust_width">步长Cách bước</label>
+                                    <div class="layui-input-inline adjust_margin">
+                                        <input type="text" value="1" name="step" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">任意大小整数，不等于0   Một số nguyên có kích thước bất kỳ, không bằng 0</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label adjust_width">编号长度Độ dài số</label>
+                                    <div class="layui-input-inline adjust_margin">
+                                        <input type="number" min="0" value="7" name="padding" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">使用前缀 0 将数字对齐到指定长度，填写0则按照原数字编号</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label adjust_width">前缀Tiếp đầu ngữ</label>
+                                    <div class="layui-input-inline adjust_margin">
+                                        <input type="text" name="prefix" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label adjust_width">后缀Hậu tố</label>
+                                    <div class="layui-input-inline adjust_margin">
+                                        <input type="text" name="suffix" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="layui-tab-item">
+
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">表达式</label>
+                                    <div class="layui-input-block">
+                                    <textarea name="inputExpression" id="inputExpression" class="layui-textarea" style="min-height: 200px" autofocus="autofocus"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">生成数量</label>
+                                    <div class="layui-input-inline">
+                                        <input type="number" name="generatorCount" min="1" max="1000000" value="100" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">范围为 1 - 100000</div>
+                                </div>
+
+
+                                <div>
+                                    <div class="layui-collapse" lay-filter="expressionProgrammer">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">表达式语法说明<i class="layui-icon layui-colla-icon"></i></h2>
+                                            <div class="layui-colla-content">
+
+                                                <div style="overflow-x: auto;">
+    <table class="layui-table">
+        <colgroup>
+            <col width="80">
+            <col width="200">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <col width="100">
+            <col>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>类别</th>
+            <th>命令</th>
+            <th>参数</th>
+            <th>参数类型</th>
+            <th>参数限制</th>
+            <th>参数可空</th>
+            <th>参数说明</th>
+            <th>命令功能</th>
+            <th>示例</th>
+            <th>示例含义</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td rowspan="18">字符串</td>
+            <td>numberStringRand</td>
+            <td>length</td>
+            <td>int</td>
+            <td>≥1</td>
+            <td>否</td>
+            <td>指定数字字符串的长度</td>
+            <td>产生指定长度的，由随机数字字符组成的字符串。</td>
+            <td>${numberStringRand@3}</td>
+            <td>产生长度为
+                3 的数字字符串，数字字符串可能以 0 开始
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">numberStringRandEx</td>
+            <td>numChar</td>
+            <td>string</td>
+            <td>N/A</td>
+            <td>否</td>
+            <td>0|1|9
+                形式，指定产生随机数字字符串所使用的数字
+            </td>
+            <td rowspan="3">产生范围长度的，由指定数字组成的数字字符串</td>
+            <td rowspan="3">${numberStringRandEx@0|1|2|3|9@3@100}</td>
+            <td rowspan="3">产生长度在
+                3 和 100 之间，由 0, 1, 2, 3, 9 组成的数字字符串
+            </td>
+        </tr>
+        <tr>
+            <td>minLength</td>
+            <td>int</td>
+            <td>≥1</td>
+            <td>否</td>
+            <td>数字字符串最小长度</td>
+        </tr>
+        <tr>
+            <td>maxLength</td>
+            <td>int</td>
+            <td>≥minLength</td>
+            <td>否</td>
+            <td>数字字符串最大长度</td>
+        </tr>
+        <tr>
+            <td rowspan="2">lowerRand</td>
+            <td>minLength</td>
+            <td>int</td>
+            <td>≥1</td>
+            <td>否</td>
+            <td>小写字母字符串最小长度</td>
+            <td rowspan="2">产生随机长度的小写字母字符串</td>
+            <td rowspan="2">${lowerRand@3@5}</td>
+            <td rowspan="2">产生长度在
+                3 和 5 之间，由英文小写字母组成的字符串
+            </td>
+        </tr>
+        <tr>
+            <td>maxLength</td>
+            <td>int</td>
+            <td>≥minLength</td>
+            <td>否</td>
+            <td>小写字母字符串最大长度</td>
+        </tr>
+        <tr>
+            <td rowspan="2">upperRand</td>
+            <td>minLength</td>
+            <td>int</td>
+            <td>≥1</td>
+            <td>否</td>
+            <td>大写字母字符串最小长度</td>
+            <td rowspan="2">产生随机长度的大写字母字符串</td>
+            <td rowspan="2">${upperRand@3@5}</td>
+            <td rowspan="2">产生长度在
+                3 和 5 之间，由英文大写字母组成的字符串
+            </td>
+        </tr>
+        <tr>
+            <td>maxLength</td>
+            <td>int</td>
+            <td>≥minLength</td>
+            <td>否</td>
+            <td>大写字母字符串最大长度</td>
+        </tr>
+        <tr>
+            <td rowspan="2">alphaNumberRand</td>
+            <td>minLength</td>
+            <td>int</td>
+            <td>≥1</td>
+            <td>否</td>
+            <td>字符串最小长度</td>
+            <td rowspan="2">产生由大写字母、小写字母、数字组成的随机长度的字符串</td>
+            <td rowspan="2">${alphaNumberRand@3@5}</td>
+            <td rowspan="2">产生长度在
+                3 和 5 之间，由英文大写字母，小写字母，数字组成的字符串
+            </td>
+        </tr>
+        <tr>
+            <td>maxLength</td>
+            <td>int</td>
+            <td>≥minLength</td>
+            <td>否</td>
+            <td>字符串最大长度</td>
+        </tr>
+        <tr>
+            <td rowspan="4">unicode</td>
+            <td>start</td>
+            <td>int
+                (hex)
+            </td>
+            <td>≥00</td>
+            <td>否</td>
+            <td>unicode
+                字符最小 codepoint ，十六进制
+            </td>
+            <td rowspan="4">产生范围内的随机
+                unicode 字符
+            </td>
+            <td rowspan="4">${unicode@4E00@9FA5@3@5}</td>
+            <td rowspan="4">产生长度在
+                3 和 5 之间，由随机中文汉字组成的字符串
+            </td>
+        </tr>
+        <tr>
+            <td>end</td>
+            <td>int
+                (hex)
+            </td>
+            <td>≤10FFFF</td>
+            <td>否</td>
+            <td>unicode
+                字符最大 codepoint ，十六进制
+            </td>
+        </tr>
+        <tr>
+            <td>minLength</td>
+            <td>int</td>
+            <td>≥1</td>
+            <td>否</td>
+            <td>字符串最小长度</td>
+        </tr>
+        <tr>
+            <td>maxLength</td>
+            <td>int</td>
+            <td>≥minLength</td>
+            <td>否</td>
+            <td>字符串最大长度</td>
+        </tr>
+        <tr>
+            <td rowspan="3">unicodeEx</td>
+            <td>rangeEx</td>
+            <td>string</td>
+            <td>N/A</td>
+            <td>否</td>
+            <td>unicode
+                codepoint 表达式，可以填写多个范围。支持的形式为 00-FF,0256,4E00-9FA5
+            </td>
+            <td rowspan="3">产生范围内的随机 unicode 字符</td>
+            <td rowspan="3">${unicode@00-FF,0256,4E00-9FA5@3@5}</td>
+            <td rowspan="3">产生长度在 3 和 5 之间，00-FF,0256,4E00-9FA5 范围内的随机字符串</td>
+        </tr>
+        <tr>
+            <td>minLength</td>
+            <td>int</td>
+            <td>≥1</td>
+            <td>否</td>
+            <td>字符串最小长度</td>
+        </tr>
+        <tr>
+            <td>maxLength</td>
+            <td>int</td>
+            <td>≥minLength</td>
+            <td>否</td>
+            <td>字符串最大长度</td>
+        </tr>
+        <tr>
+            <td>select</td>
+            <td>strList</td>
+            <td>string</td>
+            <td>格式为
+                str1|str2|str3
+            </td>
+            <td>否</td>
+            <td>候选字符串列表</td>
+            <td>从候选字符串列表中随机选择一个字符串</td>
+            <td>${select@152|137|148|1999}</td>
+            <td>随机产生
+                152, 137, 148, 1999
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="22">数字</td>
+            <td rowspan="3">numberRangeRand</td>
+            <td>min</td>
+            <td>int
+                or float
+            </td>
+            <td>N/A</td>
+            <td>否</td>
+            <td>随机数最小值，可以取到</td>
+            <td rowspan="3">产生范围内的随机整数或者浮点数</td>
+            <td rowspan="3">${numberRangeRand@-1.237@3.989@4}</td>
+            <td rowspan="3">产生大于等于
+                -1.237, 小于 3.989 的浮点数，小数点后保留 4 位数字
+            </td>
+        </tr>
+        <tr>
+            <td>max</td>
+            <td>int
+                or float
+            </td>
+            <td>＞min</td>
+            <td>否</td>
+            <td>随机数最大值，取不到</td>
+        </tr>
+        <tr>
+            <td>precision</td>
+            <td>int</td>
+            <td>≥0</td>
+            <td>否</td>
+            <td>小数点后保留位数</td>
+        </tr>
+        <tr>
+            <td rowspan="4">numberStep</td>
+            <td>start</td>
+            <td>bigint</td>
+            <td>任意大小整数</td>
+            <td>否</td>
+            <td>递增起始整数</td>
+            <td rowspan="4">产生递增的整数数字</td>
+            <td rowspan="4">${numberStep@999999999999999999999999@-100@0@16}</td>
+            <td rowspan="4">产生从
+                999999999999999999999999 开始，-100 递增的数字，不对齐，数字显示为 16 进制
+            </td>
+        </tr>
+        <tr>
+            <td>step</td>
+            <td>bigint</td>
+            <td>任意大小整数</td>
+            <td>否</td>
+            <td>递增的步长</td>
+        </tr>
+        <tr>
+            <td>padding</td>
+            <td>int</td>
+            <td>≥0</td>
+            <td>否</td>
+            <td>数字对齐长度，0
+                则不对齐。如果需要对齐到指定长度，使用前置 0 对齐
+            </td>
+        </tr>
+        <tr>
+            <td>radix</td>
+            <td>int</td>
+            <td>≥2<span>&nbsp;&nbsp; </span><br>
+                ≤36
+            </td>
+            <td>否</td>
+            <td>数字进制</td>
+        </tr>
+        <tr>
+            <td rowspan="4">numberBigintRangeRand</td>
+            <td>min</td>
+            <td>bigint</td>
+            <td>任意大小整数</td>
+            <td>否</td>
+            <td>随机数最小值，可以取到</td>
+            <td rowspan="4">产生范围内的随机整数，支持无限制大小的整数</td>
+            <td rowspan="4">${numberBigintRangeRand@-999999@9999999999999999@4@10}</td>
+            <td rowspan="4">产生大于等于
+                -999999, 小于 9999999999999999 的整数，数字长度低于 4 位使用 0 对齐，数字显示为 10 进制
+            </td>
+        </tr>
+        <tr>
+            <td>max</td>
+            <td>bigint</td>
+            <td>任意大小整数,
+                ＞min
+            </td>
+            <td>否</td>
+            <td>随机数最大值，取不到</td>
+        </tr>
+        <tr>
+            <td>padding</td>
+            <td>int</td>
+            <td>≥0</td>
+            <td>否</td>
+            <td>数字对齐长度，0
+                则不对齐。如果需要对齐到指定长度，使用前置 0 对齐
+            </td>
+        </tr>
+        <tr>
+            <td>radix</td>
+            <td>int</td>
+            <td>≥2<span>&nbsp;&nbsp; </span><br>
+                ≤36
+            </td>
+            <td>否</td>
+            <td>数字进制</td>
+        </tr>
+        <tr>
+            <td rowspan="3">numberGaussian</td>
+            <td>mean</td>
+            <td>float</td>
+            <td>N/A</td>
+            <td>否</td>
+            <td>平均数</td>
+            <td rowspan="3">产生符合正态分布的随机数</td>
+            <td rowspan="3">${numberGaussian@0@1@3}
+            </td>
+            <td rowspan="3">产生平均数为 0 ，标准差为 1 的正态分布的随机数，结果小数点后保留 3 为数字
+            </td>
+        </tr>
+        <tr>
+            <td>stdDev</td>
+            <td>float</td>
+            <td>≥0
+            </td>
+            <td>否</td>
+            <td>标准差</td>
+        </tr>
+        <tr>
+            <td>precision</td>
+            <td>int</td>
+            <td>≥0
+            </td>
+            <td>否</td>
+            <td>小数点后保留位数</td>
+        </tr>
+        <tr>
+            <td rowspan="5">numberGaussianRange</td>
+            <td>mean</td>
+            <td>float</td>
+            <td>＞min, ＜max</td>
+            <td>否</td>
+            <td>平均数</td>
+            <td rowspan="5">产生范围内的符合正态分布的随机数。注意：此功能需正确设置各参数，确保参数的逻辑关系正确</td>
+            <td rowspan="5">${numberGaussianRange@0@0.5@3@-1@1}
+            </td>
+            <td rowspan="5">产生平均数为 0，标准差为 0.5，小数点后保留 3 位，在 -1 和 1 之间的正态分布的随机数
+            </td>
+        </tr>
+        <tr>
+            <td>stdDev</td>
+            <td>float</td>
+            <td>≥0
+            </td>
+            <td>否</td>
+            <td>标准差</td>
+        </tr>
+        <tr>
+            <td>precision</td>
+            <td>int</td>
+            <td>≥0
+            </td>
+            <td>否</td>
+            <td>小数点后保留位数</td>
+        </tr>
+        <tr>
+            <td>min</td>
+            <td>float</td>
+            <td>N/A
+            </td>
+            <td>否</td>
+            <td>随机数最小值，可以取到</td>
+        </tr>
+        <tr>
+            <td>max</td>
+            <td>float</td>
+            <td>&gt;min
+            </td>
+            <td>否</td>
+            <td>随机数最大值，取不到</td>
+        </tr>
+        <tr>
+            <td rowspan="3">numberBigfloatRangeRand</td>
+            <td>min</td>
+            <td>任意大小浮点数</td>
+            <td>N/A</td>
+            <td>否</td>
+            <td>随机数最小值，可以取到</td>
+            <td rowspan="3">产生范围内任意大小的浮点数，小数点后可以保存任意位数</td>
+            <td rowspan="3">
+                ${numberBigfloatRangeRand@-1111111111111111111.2222222222@333333333333333333333333333333333333333333333333333333333333.555555@100}
+            </td>
+            <td rowspan="3">随机产生 -1111111111111111111.2222222222 和
+                333333333333333333333333333333333333333333333333333333333333.555555 之间的浮点数，小数点后保留 100 位
+            </td>
+        </tr>
+        <tr>
+            <td>max</td>
+            <td>任意大小浮点数</td>
+            <td>＞min
+            </td>
+            <td>否</td>
+            <td>随机数最大值，取不到</td>
+        </tr>
+        <tr>
+            <td>precision</td>
+            <td>int</td>
+            <td>≥0
+            </td>
+            <td>否</td>
+            <td>小数点后保留位数</td>
+        </tr>
+
+
+        <tr>
+            <td rowspan="7">时间</td>
+            <td>timeNow</td>
+            <td>format</td>
+            <td>string</td>
+            <td>时间格式化字符串</td>
+            <td>否</td>
+            <td>时间格式化字符串</td>
+            <td>产生基于当前时间的格式化字符串</td>
+            <td>${timeNow@X}</td>
+            <td>产生当前时间字符串，格式化为
+                Unix 时间戳，以秒为单位
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">timeStep</td>
+            <td>format</td>
+            <td>string</td>
+            <td>时间格式化字符串</td>
+            <td>否</td>
+            <td>时间格式化字符串</td>
+            <td rowspan="3">产生递增或者递减的时间序列，并格式化为指定的时间格式</td>
+            <td rowspan="3">${timeStep@YYYY-MM-DD HH:mm@2020-01-01
+                12:00:00@300000}
+            </td>
+            <td rowspan="3">产生从2020-01-01 12:00:00开始，自增5分钟的时间字符串。
+                产生的时间字符串的格式为YYYY-MM-DD HH:mm
+            </td>
+        </tr>
+        <tr>
+            <td>start</td>
+            <td>string</td>
+            <td>格式为
+                2022-01-03 20:59:59 或者 2022-01-03 20:59:59.123
+            </td>
+            <td>否</td>
+            <td>起始时间</td>
+        </tr>
+        <tr>
+            <td>stepMilli</td>
+            <td>int</td>
+            <td>N/A</td>
+            <td>否</td>
+            <td>时间递增步长，单位为豪秒，支持正数或者负数</td>
+        </tr>
+        <tr>
+            <td rowspan="3">timeRand</td>
+            <td>format</td>
+            <td>string</td>
+            <td>时间格式化字符串</td>
+            <td>否</td>
+            <td>时间格式化字符串</td>
+            <td rowspan="3">产生范围内的随机时间，并格式化为指定格式</td>
+            <td rowspan="3">${timeRand@x@2022-01-01 00:00:00@2023-01-01
+                00:00:00}
+            </td>
+            <td rowspan="3">随机产生 2022-01-01 00:00:00 和 2023-01-01 00:00:00
+                之间的时间，并格式化为 Unix 时间戳，以毫秒为单位
+            </td>
+        </tr>
+        <tr>
+            <td>start</td>
+            <td>string</td>
+            <td>格式为
+                2022-01-03 20:59:59 或者 2022-01-03 20:59:59.123
+            </td>
+            <td>否</td>
+            <td>起始时间</td>
+        </tr>
+        <tr>
+            <td>end</td>
+            <td>string</td>
+            <td>格式为
+                2022-01-03 20:59:59 或者 2022-01-03 20:59:59.123, ≥start
+            </td>
+            <td>否</td>
+            <td>结束时间</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label adjust_width">结果连接</label>
+                        <div class="layui-input-inline adjust_margin">
+                            <select name="joinFormat" lay-filter="joinFormat" id="joinFormat">
+                                <option value="none">无</option>
+                                <option value="comma" selected="">逗号</option>
+                                <option value="lf" selected="">换行(LF)</option>
+                                <option value="crlf">回车换行(CRLF)</option>
+                                <option value="json">JSON</option>
+                                <option value="jsonRaw">JSON Raw</option>
+                                <option value="jsonCompress">JSON Compress</option>
+                                <option value="jsonRawCompress">JSON Raw Compress</option>
+                                <option value="custom">自定义</option>
+                            </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择" value="换行(LF)" readonly="" class="layui-input layui-unselect" name=""><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="none" class="">无</dd><dd lay-value="comma" class="">逗号</dd><dd lay-value="lf" class="layui-this">换行(LF)</dd><dd lay-value="crlf" class="">回车换行(CRLF)</dd><dd lay-value="json" class="">JSON</dd><dd lay-value="jsonRaw" class="">JSON Raw</dd><dd lay-value="jsonCompress" class="">JSON Compress</dd><dd lay-value="jsonRawCompress" class="">JSON Raw Compress</dd><dd lay-value="custom" class="">自定义</dd></dl></div>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-hide" id="joinStringContainer">
+                        <label class="layui-form-label adjust_width">连接字符</label>
+                        <div class="layui-input-inline adjust_margin">
+                            <input type="text" id="joinString" name="joinString" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label adjust_width">唯一</label>
+                        <div class="layui-input-inline adjust_margin" style="width: unset;">
+                            <input type="radio" name="exPhoneUnique" value="true" title="是" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>是</div></div>
+                            <input type="radio" name="exPhoneUnique" value="false" title="否"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>否</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline layui-btn-container">
+                        <button class="layui-btn" lay-submit="" lay-filter="startGenerate" id="startGenerate">生成Phát ra</button>
+                        <button class="layui-btn  layui-btn-primary" id="startCopy" data-clipboard-target="#transformResult">复制Sao chép</button>
+                        <button class="layui-btn  layui-btn-primary" id="startDownload">下载Tải xuống</button>
+                        <button class="layui-btn layui-btn-primary" id="startClear">清空Xoá</button>
+                    </div>
+
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">结果Kết quả</label>
+                    <div class="layui-input-block">
+                        <div id="transformResult" class="layui-textarea" style="min-height: 250px">0000000
+</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div style="margin-bottom: 30px;">
+    
+</div>
+
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>在线序列号生成器-使用说明</legend>
+        </fieldset>
+
+        <div id="useNote">
+
+            
+
+            <div>
+                <p>
+                    在线序列号生成器，支持在线生成序列号，流水号，或者符合特定协议的文本序列。本工具的典型使用用途为生成序列号，按照协议批量生成随机文本数据。
+                    生成支持简单的基于数字生成文本序列，高级的基于表达式，生成复杂的文本序列。表达式支持随机字符串，数字，浮点数，时间，Unicode字符参与文本生成。
+                </p>
+                <ol>
+                    <li>
+                        基于数字：使用数字上下限产生数字序列，再加上可选的前缀或者后缀生成特定的文本序列。适用于简单的流水号生成。
+                    </li>
+                    <li>
+                        基于表达式：使用支持的表达式语法，生成文本序列。适用于复杂的文本数据生成。表达式语法参考上述的语法说明，您填写的表达式需要完全正确。
+                    </li>
+                    <li>
+                        下载文件的编码为 <span class="main_code">UTF-8</span> 。
+                    </li>
+                    <li>
+                        时间格式化字符串文档
+                        <div>
+                            <div style="overflow-x: auto;">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>占位符</th>
+            <th>输出</th>
+            <th>详情</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>YY</code></td>
+            <td>18</td>
+            <td>两位数的年份</td>
+        </tr>
+        <tr>
+            <td><code>YYYY</code></td>
+            <td>2018</td>
+            <td>四位数的年份</td>
+        </tr>
+        <tr>
+            <td><code>M</code></td>
+            <td>1-12</td>
+            <td>月份，从 1 开始</td>
+        </tr>
+        <tr>
+            <td><code>MM</code></td>
+            <td>01-12</td>
+            <td>月份，两位数</td>
+        </tr>
+        <tr>
+            <td><code>MMM</code></td>
+            <td>Jan-Dec</td>
+            <td>缩写的月份名称</td>
+        </tr>
+        <tr>
+            <td><code>MMMM</code></td>
+            <td>January-December</td>
+            <td>完整的月份名称</td>
+        </tr>
+        <tr>
+            <td><code>D</code></td>
+            <td>1-31</td>
+            <td>月份里的一天</td>
+        </tr>
+        <tr>
+            <td><code>DD</code></td>
+            <td>01-31</td>
+            <td>月份里的一天，两位数</td>
+        </tr>
+        <tr>
+            <td><code>d</code></td>
+            <td>0-6</td>
+            <td>一周中的一天，星期天是 0</td>
+        </tr>
+        <tr>
+            <td><code>dd</code></td>
+            <td>Su-Sa</td>
+            <td>最简写的星期几</td>
+        </tr>
+        <tr>
+            <td><code>ddd</code></td>
+            <td>Sun-Sat</td>
+            <td>简写的星期几</td>
+        </tr>
+        <tr>
+            <td><code>dddd</code></td>
+            <td>Sunday-Saturday</td>
+            <td>星期几</td>
+        </tr>
+        <tr>
+            <td><code>H</code></td>
+            <td>0-23</td>
+            <td>小时</td>
+        </tr>
+        <tr>
+            <td><code>HH</code></td>
+            <td>00-23</td>
+            <td>小时，两位数</td>
+        </tr>
+        <tr>
+            <td><code>h</code></td>
+            <td>1-12</td>
+            <td>小时, 12 小时制</td>
+        </tr>
+        <tr>
+            <td><code>hh</code></td>
+            <td>01-12</td>
+            <td>小时, 12 小时制, 两位数</td>
+        </tr>
+        <tr>
+            <td><code>m</code></td>
+            <td>0-59</td>
+            <td>分钟</td>
+        </tr>
+        <tr>
+            <td><code>mm</code></td>
+            <td>00-59</td>
+            <td>分钟，两位数</td>
+        </tr>
+        <tr>
+            <td><code>s</code></td>
+            <td>0-59</td>
+            <td>秒</td>
+        </tr>
+        <tr>
+            <td><code>ss</code></td>
+            <td>00-59</td>
+            <td>秒 两位数</td>
+        </tr>
+        <tr>
+            <td><code>SSS</code></td>
+            <td>000-999</td>
+            <td>毫秒 三位数</td>
+        </tr>
+        <tr>
+            <td><code>Z</code></td>
+            <td>+05:00</td>
+            <td>UTC 的偏移量，±HH:mm</td>
+        </tr>
+        <tr>
+            <td><code>ZZ</code></td>
+            <td>+0500</td>
+            <td>UTC 的偏移量，±HHmm</td>
+        </tr>
+        <tr>
+            <td><code>A</code></td>
+            <td>AM PM</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>a</code></td>
+            <td>am pm</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td><code>Q</code></td>
+            <td>1-4</td>
+            <td>季度</td>
+        </tr>
+        <tr>
+            <td><code>Do</code></td>
+            <td>1st 2nd ... 31st</td>
+            <td>带序数词的月份里的一天</td>
+        </tr>
+        <tr>
+            <td><code>k</code></td>
+            <td>1-24</td>
+            <td>时：由 1 开始</td>
+        </tr>
+        <tr>
+            <td><code>kk</code></td>
+            <td>01-24</td>
+            <td>时：由 1 开始，两位数</td>
+        </tr>
+        <tr>
+            <td><code>X</code></td>
+            <td>1360013296</td>
+            <td>秒为单位的 Unix 时间戳</td>
+        </tr>
+        <tr>
+            <td><code>x</code></td>
+            <td>1360013296123</td>
+            <td>毫秒单位的 Unix 时间戳</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            
+
+        </div>
+
+        <div style="margin-bottom:30px;margin-top:30px;">
+
+    <script type="text/javascript" src="./在线序列号生成器_files/iframeResizer.min-c9e66a2defa618cf36ec8d8b866213c3.js"></script>
+    
+    <script type="text/javascript">
+        iFrameResize({log: false}, '#toolNoteIframe');
+    </script>
+
+</div>
+
+    </div>
+
+    <div>
+    <style type="text/css">
+        @media screen and (max-width: 768px) {
+            .footer_block_area {
+                display: block;
+            }
+
+            .lang_common_footer_margin_adjust {
+                margin-left: unset !important;
+                margin-top: 15px;
+            }
+
+            .adjust_footer_height {
+                height: 210px !important;
+            }
+        }
+    </style>
+    
+</div>
+</div>
+
+
+    <script type="text/javascript" src="./在线序列号生成器_files/layui.all.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="./在线序列号生成器_files/clipboard.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/string_util-492568f062b9062db3a9ba12a0c35892.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/random_util-50472d27fa4c16c4541369a6d82723cd.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/uint8_util-c89a10c5af0ee6bb2411263e72428cca.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/request_util_open_api_async-f10cac613b8ddaf329dddccd9c68c288.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/string_template_util-71a1df55d3cd6cba51e88edfb402c378.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/seq_base-7bde4bd5e60e7a67c8e10c24bf428ae1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/download.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/tool_note-104ceeb9dfecb0a43c2c82318874f57a.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="./在线序列号生成器_files/dayjs.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/customParseFormat.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/advancedFormat.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/dayjs_locale_en.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./在线序列号生成器_files/bloom-filters.js" charset="UTF-8" async=""></script>
+
+<script type="text/javascript">
+    registerSeqEvent();
+</script>
+
+<div>
+    <script type="text/javascript" src="./在线序列号生成器_files/side_bar-49c4e9701e406a33900c765a37d31181.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./在线序列号生成器_files/clipboard.min.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        function initCopyToolLink() {
+            if (!ClipboardJS) {
+                return;
+            }
+            let copyToolLinkStaticElem = document.getElementById("copyToolLinkStatic");
+            if (!copyToolLinkStaticElem) {
+                return;
+            }
+            const clipboard = new ClipboardJS(copyToolLinkStaticElem, {
+                text: function (trigger) {
+                    return window.location.href;
+                },
+            });
+            clipboard.on('success', function (e) {
+                layui.layer.msg(getLangMsg("user.operator.copySuccess"));
+            });
+        }
+
+        function initToolNoteIframe() {
+            try {
+                let toolNoteIframe = document.getElementById("toolNoteIframe");
+                if (!toolNoteIframe) {
+                    return;
+                }
+                toolNoteIframe.onload = function () {
+                    toolNoteIframe.contentWindow.setParentLayui(layui);
+                };
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        function saveToolHistory() {
+            try {
+                let $ = layui.$;
+                let toolID = $("#toolID").val();
+                if (!toolID) {
+                    return;
+                }
+                const MAX_HISTORY_TOOL_COUNT = 3;
+                let url = window.location.href;
+                let title = document.title;
+                let lastUseToolTable = "lastUseToolTable";
+                let lastUseToolKey = "lastUseToolKey";
+                let historyArr = null;
+                let historyTable = layui.data(lastUseToolTable);
+                if (historyTable) {
+                    historyArr = historyTable[lastUseToolKey];
+                }
+                if (historyArr) {
+                    try {
+                        historyArr = JSON.parse(historyArr);
+                        let toolIndex = historyArr.findIndex(item => item.toolID === toolID);
+                        if (toolIndex >= 0) {  //已经有该工具
+                            historyArr.splice(toolIndex, 1);
+                        }
+                        if (historyArr.length >= MAX_HISTORY_TOOL_COUNT) {
+                            historyArr.splice(2);
+                        }
+                    } catch (e) {
+                        historyArr = [];
+                    }
+                } else {
+                    historyArr = [];
+                }
+                historyArr.splice(0, 0, {
+                    toolID: toolID,
+                    title: title,
+                    url: url,
+                });
+                let historyArrJson = JSON.stringify(historyArr);
+                layui.data(lastUseToolTable, {
+                    key: lastUseToolKey,
+                    value: historyArrJson,
+                })
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        function initBeforeBody() {
+            initCopyToolLink();
+            initToolNoteIframe();
+            saveToolHistory();
+        }
+
+        initBeforeBody();
+    </script>
+    <!--    百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?75a21f203d323a988b1d8ce0eeae4de5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+</div><ul class="layui-fixbar" style="bottom: 160px;"><li class="layui-icon" lay-type="bar1" style=""></li><li class="layui-icon layui-fixbar-top" lay-type="top" style="display: none;"></li></ul><ul class="layui-fixbar" style="bottom: 160px;"></ul><ul class="layui-fixbar" style="bottom: 160px;"><li class="layui-icon layui-fixbar-top" lay-type="top" style="display: none;"></li></ul>
+
+
+
+<button id="paste-helper-id" style="width: 0px; height: 0px; padding: 0px; margin: 0px; border: 0px; display: none;"></button><div class="layui-layer-move"></div></body></html>
